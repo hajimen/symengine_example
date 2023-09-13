@@ -58,7 +58,7 @@ def print_processing_time():
 
 def main_1d(method: Method, func, func_name: str):
     for i in range(DEGREE + N_KNOT):
-        ys = compute(method, func, i)
+        ys = compute(method, func, (i,))
         plt.plot(XS, ys, label=str(i))
     print_processing_time()
     plt.legend(bbox_to_anchor=(1, 1), loc='upper right')
