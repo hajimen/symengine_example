@@ -34,7 +34,7 @@ class _Array:
 
     def __getitem__(self, indices):
         sub = {}
-        for i, si in zip(indices, self.s_indices):
+        for i, si in zip(indices, self.s_indices[::-1]):
             sub[si] = i
         return self.pw.subs(sub)
 
@@ -154,7 +154,7 @@ class NdimLinearInterpolator:
             weight = np.array([1.])
             for w in weights:
                 weight = weight * w
-            term = np.asarray(self.values[edge_indices]) * weight[vslice]
+            term = np.asarray(self.values[edge_indices[::-1]]) * weight[vslice]
             value = value + term   # cannot use += because broadcasting
         return value[0]
 
